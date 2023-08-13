@@ -6,8 +6,12 @@ COPY package*.json ./
 
 RUN npm install --only=production
 
-COPY ./src .
+COPY . .
+
+RUN npm install typescript
+
+RUN npm run prod-build
 
 EXPOSE 3000
 
-CMD ["node", "index.js"]
+CMD ["npm", "prod-start"]
